@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -7,6 +8,11 @@ const analyticsRoutes = require('./routes/analytics.route');
 const categoryRoutes = require('./routes/category.route');
 const orderRoutes = require('./routes/order.route');
 const positionRoutes = require('./routes/position.route');
+const conectionURL = require('./config/config');
+
+mongoose.connect(conectionURL.mongoURI)
+    .then(() => console.log('DB conect: true'))
+    .catch(() => console.log('DB conect: false'));
 
 const app = express();
 
