@@ -1,5 +1,6 @@
 const express = require('express');
 const controllers = require('../controllers/position.controller');
+
 const router = express.Router();
 
 router.get('/:categoryId', controllers.getByCategoryId);
