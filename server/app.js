@@ -11,8 +11,8 @@ const positionRoutes = require('./routes/position.route');
 const conectionURL = require('./config/config');
 
 mongoose.connect(conectionURL.mongoURI)
-    .then(() => console.log('DB conect: true'))
-    .catch(() => console.log('DB conect: false'));
+    .then(() => console.log('connect to DB: true'))
+    .catch(() => console.log('connect to DB: true'));
 
 const app = express();
 
