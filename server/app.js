@@ -1,20 +1,19 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const passport = require('passport');
 const authRoutes = require('./routes/auth.route');
 const analyticsRoutes = require('./routes/analytics.route');
 const categoryRoutes = require('./routes/category.route');
 const orderRoutes = require('./routes/order.route');
 const positionRoutes = require('./routes/position.route');
-const conectionURL = require('./config/config');
 
-mongoose.connect(conectionURL.mongoURI)
-    .then(() => console.log('connect to DB: true'))
-    .catch(() => console.log('connect to DB: true'));
 
 const app = express();
+
+app.use(passport.initialize())
+require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
