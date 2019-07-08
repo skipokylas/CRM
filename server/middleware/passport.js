@@ -1,29 +1,27 @@
 const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
+const { ExtractJwt } = require('passport-jwt');
 const config = require('../config/config');
-const mongoose = require('mongoose');
 const User = require('../models/User');
 
 const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: config.jwt
-}
+    secretOrKey: config.jwt,
+};
 
-module.exports = passport => {
+module.exports = (passport) => {
     passport.use(
         new JwtStrategy(options, async (payload, done) => {
             try {
                 const user = await User.findById(payload.userId).select('email id');
 
                 if (user) {
-                    done(null, user)
+                    done(null, user);
                 } else {
-                    done(null, false)
+                    done(null, false);
                 }
             } catch (error) {
                 console.log(error);
             }
-
-        })
-    )
-}
+        }),
+    );
+};

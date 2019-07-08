@@ -12,7 +12,7 @@ const positionRoutes = require('./routes/position.route');
 
 const app = express();
 
-app.use(passport.initialize())
+app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
