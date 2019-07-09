@@ -39,7 +39,7 @@ module.exports.create = async (req, res) => {
     const category = new Category({
         name: req.body.name,
         user: req.user.id,
-        imageSrc: req.file ? req.file.path : '',
+        imageSrc: req.file && req.file.cloudStoragePublicUrl ? req.file.cloudStoragePublicUrl : '',
     });
 
     try {
@@ -56,8 +56,8 @@ module.exports.update = async (req, res) => {
         name: req.body.name,
     };
 
-    if (req.file) {
-        updated.imageSrc = req.file.path;
+    if (req.file && req.file.cloudStoragePublicUrl) {
+        updated.imageSrc = req.file.cloudStoragePublicUrl;
     }
 
     try {
