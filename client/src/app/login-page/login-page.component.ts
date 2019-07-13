@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../shared/services/auth.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +11,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
 
-  constructor() {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -19,6 +25,23 @@ export class LoginPageComponent implements OnInit {
         Validators.minLength(6)
       ])
     });
+
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['registered']) {
+        // some code
+      } else if (params['accessDenied']) {
+        // some code
+      }
+    });
   }
-  onSubmit() {}
+
+  onSubmit() {
+    this.form.disable();
+    this.auth.login(this.form.value).subscribe(
+      () => this.router.navigate(['/owerview']),
+      error => {
+        this.form.enable();
+      }
+    );
+  }
 }
