@@ -18,7 +18,14 @@ export class AuthService {
     );
   }
 
-  register() {}
+  register(user: IUser): Observable<IToken> {
+    return this.http.post<IToken>('/api/auth/register', user).pipe(
+      tap(({ token }) => {
+        localStorage.setItem('auth-token', token);
+        this.setToken(token);
+      })
+    );
+  }
 
   setToken(token: string): void {
     this.token = token;
