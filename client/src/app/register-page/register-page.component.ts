@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { MaterialService } from '../shared/helpers/materialize.service';
 
 @Component({
   selector: 'app-register-page',
@@ -16,10 +17,7 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6)
-      ])
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 
@@ -34,6 +32,7 @@ export class RegisterPageComponent implements OnInit {
         });
       },
       error => {
+        MaterialService.toast(error.error.message);
         this.form.enable();
       }
     );
