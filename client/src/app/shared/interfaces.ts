@@ -6,3 +6,10 @@ export interface IUser {
 export interface IToken {
   token: string;
 }
+
+export interface ICategory {
+  name: string;
+  imageSrc?: string;
+  user?: string;
+  _id?: string;
+}
