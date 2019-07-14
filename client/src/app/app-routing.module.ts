@@ -5,7 +5,11 @@ import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.co
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { OverviewComponent } from './overview/overview.component';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
+import { AnaliticsPageComponent } from './analitics-page/analitics-page.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { CategoriesPageComponent } from './categories-page/categories-page.component';
 
 const routes: Routes = [
   {
@@ -32,10 +36,11 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      {
-        path: 'overview',
-        component: OverviewComponent
-      }
+      { path: 'overview', component: OverviewPageComponent },
+      { path: 'analytics', component: AnaliticsPageComponent },
+      { path: 'history', component: HistoryPageComponent },
+      { path: 'order', component: OrderPageComponent },
+      { path: 'categories', component: CategoriesPageComponent }
     ]
   }
 ];
