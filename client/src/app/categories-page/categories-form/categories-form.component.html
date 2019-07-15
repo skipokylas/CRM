@@ -2,7 +2,7 @@
     <h4>
         <a [routerLink]="['/categories']">Categories</a>
         <i class="material-icons">keyboard_arrow_right</i>
-        {{this.isNew ? 'Add': 'Edit'}} category
+        {{this.category ? 'Edit' : 'Add'}} category
     </h4>
     <span>
         <button class="btn btn-small red">
@@ -22,7 +22,8 @@
         </div>
 
         <div>
-            <button class="waves-effect waves-light btn orange lighten-2 mb2" type="button">
+            <input type="file" class="dn" (change)="onFileSelect($event)" #inputFile>
+            <button class="waves-effect waves-light btn orange lighten-2 mb2" type="button" (click)="triggerClick()" [disabled]="form.disabled">
                 <i class="material-icons left">backup</i>
                 Upload image
             </button>
@@ -36,7 +37,7 @@
     </form>
 
     <div class="col s12 l4 center">
-        <img class="responsive-img" style="height: 200px" src="cake.jpg">
+        <img class="responsive-img prv-img" [src]="imagePreview">
     </div>
 </div>
 
