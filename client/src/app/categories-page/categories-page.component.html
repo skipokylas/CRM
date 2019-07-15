@@ -7,13 +7,13 @@
 
 <div class="row" *ngIf="$categories | async as categories; else loading">
     <div class="col s12">
-        <div class="collection" *ngIf="categories.length; else noItems">
-            <a [routerLink]="['/categories', category._id]" class="collection-item" *ngFor='let category of categories | async'>
+        <div class="collection" *ngIf="categories.length; else empty">
+            <a class="collection-item" *ngFor='let category of categories' [routerLink]="['/categories', category._id]">
                 {{category.name}}
             </a>
         </div>
     </div>
-    <ng-template #noItems class="center">
+    <ng-template #empty class="center">
         <div class="center">
             No Items!
         </div>
