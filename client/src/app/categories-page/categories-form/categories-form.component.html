@@ -5,7 +5,7 @@
         {{this.category ? 'Edit' : 'Add'}} category
     </h4>
     <span>
-        <button class="btn btn-small red">
+        <button class="btn btn-small red" (click)="deleteCategory()" *ngIf="this.category">
             <i class="material-icons">delete</i>
         </button>
     </span>

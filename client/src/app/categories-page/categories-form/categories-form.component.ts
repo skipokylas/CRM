@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { switchMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { MaterialService } from 'src/app/shared/helpers/materialize.service';
-import { ICategory } from 'src/app/shared/interfaces';
+import { ICategory, IMessage } from 'src/app/shared/interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -21,7 +21,7 @@ export class CategoriesFormComponent implements OnInit {
   imagePreview = '';
   category: ICategory | null = null;
 
-  constructor(private route: ActivatedRoute, private categoryService: CategoryService) {}
+  constructor(private route: ActivatedRoute, private categoryService: CategoryService, private router: Router) {}
 
   ngOnInit() {
     this.initForm();
@@ -82,5 +82,18 @@ export class CategoriesFormComponent implements OnInit {
         this.form.enable();
       }
     );
+  }
+
+  deleteCategory() {
+    const confirm = window.confirm(`Do you want delete category: ${this.category.name}?`);
+    if (confirm) {
+      this.categoryService
+        .delete(this.category._id)
+        .subscribe(
+          (res: IMessage) => MaterialService.toast(res.message),
+          (error: HttpErrorResponse) => MaterialService.toast(error.error.message),
+          () => this.router.navigate(['/categories'])
+        );
+    }
   }
 }

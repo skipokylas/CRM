@@ -13,3 +13,7 @@ export interface ICategory {
   user?: string;
   _id?: string;
 }
+
+export interface IMessage {
+  message: string;
+}
