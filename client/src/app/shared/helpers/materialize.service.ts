@@ -1,4 +1,5 @@
 import { ElementRef } from '@angular/core';
+import { MaterialModalInstance } from '../interfaces';
 
 declare var M: any;
 export class MaterialService {
@@ -12,5 +13,9 @@ export class MaterialService {
 
   static UpdateTextInputs(): void {
     M.updateTextFields();
+  }
+
+  static initModal(modalRef: ElementRef): MaterialModalInstance {
+    return M.Modal.init(modalRef.nativeElement);
   }
 }
