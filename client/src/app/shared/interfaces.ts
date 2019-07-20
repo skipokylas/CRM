@@ -24,6 +24,7 @@ export interface IPosition {
   user?: string;
   category: string;
   _id?: string;
+  quantity?: number;
 }
 
 export interface MaterialModalInstance {

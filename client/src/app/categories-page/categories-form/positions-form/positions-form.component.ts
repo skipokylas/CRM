@@ -117,7 +117,7 @@ export class PositionsFormComponent implements OnInit, OnDestroy {
     position._id = this.positionId;
     this.positionService.update(position).subscribe(
       (updatedPosition: IPosition) => {
-        MaterialService.toast(`Position: ${updatedPosition.name} was created`);
+        MaterialService.toast(`Position: ${updatedPosition.name} was updated`);
         this.positions[this.findIndex(position)] = position;
       },
       (error: HttpErrorResponse) => {
