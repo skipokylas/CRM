@@ -42,7 +42,7 @@ export interface IOrderPosition {
   _id?: string;
 }
 
-export interface MaterialModalInstance {
+export interface MaterialInstance {
   open?(): void;
   close?(): void;
   destroy?(): void;

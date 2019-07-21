@@ -1,5 +1,5 @@
 import { ElementRef } from '@angular/core';
-import { MaterialModalInstance } from '../interfaces';
+import { MaterialInstance } from '../interfaces';
 
 declare var M: any;
 export class MaterialService {
@@ -15,7 +15,11 @@ export class MaterialService {
     M.updateTextFields();
   }
 
-  static initModal(modalRef: ElementRef): MaterialModalInstance {
+  static initModal(modalRef: ElementRef): MaterialInstance {
     return M.Modal.init(modalRef.nativeElement);
+  }
+
+  static initTooltip(tooltipRef: ElementRef): MaterialInstance {
+    return M.Tooltip.init(tooltipRef.nativeElement);
   }
 }
