@@ -27,6 +27,21 @@ export interface IPosition {
   quantity?: number;
 }
 
+export interface IOrder {
+  date?: Date;
+  order?: number;
+  user?: string;
+  list?: IOrderPosition[];
+  _id?: string;
+}
+
+export interface IOrderPosition {
+  name: string;
+  cost: number;
+  quantity: number;
+  _id?: string;
+}
+
 export interface MaterialModalInstance {
   open?(): void;
   close?(): void;
