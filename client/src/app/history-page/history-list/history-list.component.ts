@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { IOrder, MaterialInstance } from 'src/app/shared/interfaces';
+import { IOrder, IMaterialInstance } from 'src/app/shared/interfaces';
 import { MaterialService } from 'src/app/shared/helpers/materialize.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class HistoryListComponent implements OnInit, OnDestroy {
   @Input() orders: IOrder[];
   @ViewChild('modal', { static: true }) modalRef: ElementRef;
 
-  modal: MaterialInstance;
+  modal: IMaterialInstance;
   selectedOrder: IOrder;
   constructor() {}
 

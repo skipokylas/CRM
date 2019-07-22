@@ -42,8 +42,17 @@ export interface IOrderPosition {
   _id?: string;
 }
 
-export interface MaterialInstance {
+export interface IMaterialInstance {
   open?(): void;
   close?(): void;
   destroy?(): void;
+}
+
+export interface IMaterialDatepicker extends IMaterialInstance {
+  date?: Date;
+}
+export interface IFilter {
+  start?: Date;
+  end?: Date;
+  order?: number;
 }

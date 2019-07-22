@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MaterialService } from '../shared/helpers/materialize.service';
-import { MaterialInstance, IOrderPosition, IOrder } from '../shared/interfaces';
+import { IMaterialInstance, IOrderPosition, IOrder } from '../shared/interfaces';
 import { OrderPositionService } from '../shared/helpers/order-position.service';
 import { OrderService } from '../shared/services/order.service';
 
@@ -13,7 +13,7 @@ import { OrderService } from '../shared/services/order.service';
 })
 export class OrderPageComponent implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modalRef: ElementRef;
-  modal: MaterialInstance;
+  modal: IMaterialInstance;
   isRoot: boolean;
   panding = false;
 

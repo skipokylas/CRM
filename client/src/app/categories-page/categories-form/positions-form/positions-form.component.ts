@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { PositionService } from 'src/app/shared/services/position.service';
-import { IPosition, MaterialInstance, IMessage } from 'src/app/shared/interfaces';
+import { IPosition, IMaterialInstance, IMessage } from 'src/app/shared/interfaces';
 import { MaterialService } from 'src/app/shared/helpers/materialize.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class PositionsFormComponent implements OnInit, OnDestroy {
   positions: IPosition[] = [];
   loading = false;
   positionId = null;
-  modal: MaterialInstance;
+  modal: IMaterialInstance;
   form: FormGroup;
 
   constructor(private positionService: PositionService) {}
