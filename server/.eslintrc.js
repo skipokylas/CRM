@@ -19,5 +19,7 @@ module.exports = {
     rules: {
         "indent": ["error", 4],
         "no-underscore-dangle": [0],
+        "max-len": [1, 140, 2],
+        "no-return-assign": [0]
     },
 };
