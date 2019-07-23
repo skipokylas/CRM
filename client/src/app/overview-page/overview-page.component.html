@@ -1,0 +1,69 @@
+<div class="page-title">
+    <h4>
+        Overview for yesterday. ({{yesterday | date: 'dd/MM/yyyy'}})
+        <i class="material-icons black-text pointer" (click)="openInfo()">info_outline</i>
+    </h4>
+</div>
+
+<div class="row" *ngIf="$overview | async as overview; else loader">
+    <div class="col s12 l6">
+        <div class="card light-blue lighten-2 white-text">
+            <div class="card-content">
+                <span class="card-title">Profit:</span>
+                <h3>{{overview.profit.yesterday}} USD</h3>
+                <h3 class="m0 mb1" [ngClass]="{
+                        'green-text text-darken-2': overview.profit.isHigher,
+                        'red-text': !overview.profit.isHigher}">
+                    <i class="material-icons">
+                        {{overview.profit.isHigher ? 'arrow_upward' : 'arrow_downward'}}
+                    </i>
+                    {{overview.profit.percent}}%
+                </h3>
+                <p>
+                    Your business revenue yesterday is
+                    {{overview.profit.percent}}%
+                    {{overview.profit.isHigher ? 'above' : 'below'}}
+                    average: {{overview.profit.compare}} USD. in a day
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 l6">
+        <div class="card orange lighten-2 white-text">
+            <div class="card-content">
+                <span class="card-title">Orders:</span>
+                <h3>{{overview.orders.yesterday}} orders</h3>
+                <h3 class="m0 mb1" [ngClass]="{
+                    'green-text text-darken-2': overview.orders.isHigher,
+                    'red-text': !overview.orders.isHigher}">
+                    <i class="material-icons">
+                        {{overview.orders.isHigher ? 'arrow_upward' : 'arrow_downward'}}
+                    </i>
+                    {{overview.orders.percent}}%
+                </h3>
+                <p>
+                    The number of orders yesterday at
+                    {{overview.orders.percent}}%
+                    {{overview.orders.isHigher ? 'above' : 'below'}}
+                    average: {{overview.orders.compare}}
+                    orders in a day
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+
+<div class="tap-target" data-target="menu" #tapTarget>
+    <div class="tap-target-content">
+        <h5>Why is this page needed?</h5>
+        <p>
+            The “Review” page will show the sales dynamics for the previous day.
+            A comparison with average values will help you understand how your business is doing.
+        </p>
+    </div>
+</div>

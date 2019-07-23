@@ -56,3 +56,15 @@ export interface IFilter {
   end?: Date;
   order?: number;
 }
+
+export interface IOverview {
+  orders: IOverviewItem;
+  profit: IOverviewItem;
+}
+
+export interface IOverviewItem {
+  percent: number;
+  compare: number;
+  yesterday: number;
+  isHigher: boolean;
+}

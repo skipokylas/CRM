@@ -22,11 +22,16 @@ export class MaterialService {
   static initTooltip(tooltipRef: ElementRef): IMaterialInstance {
     return M.Tooltip.init(tooltipRef.nativeElement);
   }
+
   static initDatepicker(datepickerRef: ElementRef, onClose: () => void): IMaterialInstance {
     return M.Datepicker.init(datepickerRef.nativeElement, {
       format: 'dd.mm.yyyy',
       showClearBtn: true,
       onClose
     });
+  }
+
+  static initTapTarget(tapTargetRef: ElementRef): IMaterialInstance {
+    return M.TapTarget.init(tapTargetRef.nativeElement);
   }
 }
