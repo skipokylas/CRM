@@ -30,12 +30,12 @@ function calculatePrice(orders = []) {
 module.exports.overview = async (req, res) => {
     try {
         const allOrders = await Order.find({ user: req.user.id }).sort({ data: 1 });
-        const orderMap = getOrderMap(allOrders);
-        const yesterdayOrders = orderMap[moment().add(-1, 'd').format('DD.MM.YYYY')] || [];
+        const ordersMap = getOrderMap(allOrders);
+        const yesterdayOrders = ordersMap[moment().add(-1, 'd').format('DD.MM.YYYY')] || [];
         const yesterdayOrdersCount = yesterdayOrders.length;
 
         const totalOrdersCount = allOrders.length;
-        const daysCount = Object.keys(orderMap).length;
+        const daysCount = Object.keys(ordersMap).length;
         const ordersPerDay = (totalOrdersCount / daysCount).toFixed(0);
         const ordersPercent = (((yesterdayOrdersCount / ordersPerDay) - 1) * 100).toFixed(2);
         const totalProfit = calculatePrice();
@@ -64,6 +64,21 @@ module.exports.overview = async (req, res) => {
     }
 };
 
-module.exports.analytics = (req, res) => {
+module.exports.analytics = async (req, res) => {
+    try {
+        const allOrders = await Order.find({ user: req.user.id }).sort({ date: 1 });
+        const ordersMap = getOrderMap(allOrders);
 
+        const average = +(calculatePrice(allOrders) / Object.keys(ordersMap).length).toFixed(2);
+        const chart = Object.keys(ordersMap).map((label) => {
+            // label == 05.05.2019
+            const profit = calculatePrice(ordersMap[label]);
+            const order = ordersMap[label].length;
+            return { label, order, profit };
+        });
+
+        res.status(200).json({ average, chart });
+    } catch (error) {
+        errorHandler(res, error);
+    }
 };

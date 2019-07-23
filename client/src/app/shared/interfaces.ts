@@ -68,3 +68,14 @@ export interface IOverviewItem {
   yesterday: number;
   isHigher: boolean;
 }
+
+export interface IAnalytics {
+  average: number;
+  chart: IAnalyticsChart[];
+}
+
+export interface IAnalyticsChart {
+  profit: number;
+  order: number;
+  label: string;
+}
