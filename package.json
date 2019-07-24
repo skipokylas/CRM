@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index && npx eslint './'",
+    "start": "nodemon index",
+    "start-dev": "nodemon index && npx eslint './'",
     "eslint": "eslint",
     "postinstall": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --aot --prod --prefix client"
   },
