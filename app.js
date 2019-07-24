@@ -27,8 +27,6 @@ app.use('/api/category', categoryRoutes);
 app.use('/api/order', orderRoutes);
 app.use('/api/position', positionRoutes);
 
-console.log(process.env.NODE_ENV, ' - process.env.NODE_ENV');
-
 if (process.env.NODE_ENV === 'PRODUCTION') {
     app.use(express.static('client/dist/CRM'));
     app.get('*', (req, res) => {
