@@ -1,8 +1,6 @@
-const pConf = require('./config-prod');
-const dConf = require('./config-dev');
-
+/* eslint-disable global-require */
 if (process.env.NODE_ENV === 'production') {
-    module.exports = pConf;
+    module.exports = require('./config-prod');
 } else {
-    module.exports = dConf;
+    module.exports = require('./config-dev');
 }
