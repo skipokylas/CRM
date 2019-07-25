@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all -s install-node-modules build-client start-server",
+    "start": "npm run install-node-modules && npm run install-node-modules && npm run build-client && npm run start-server",
     "start-dev": "npm-run-all -p install-node-modules eslint start start-client",
     "start-client": "npm run start --prefix client",
     "start-server": "nodemon index",
