@@ -16,7 +16,7 @@ MongoDB
 ```
 ## Demo
 
-Demo [pip](https://ng-crm.herokuapp.com/login) to install foobar.
+Demo [link](https://ng-crm.herokuapp.com/login).
 
 ## Installation
 
