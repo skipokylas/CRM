@@ -12,12 +12,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run install-node-modules && npm run install-node-modules && npm run build-client && npm run start-server",
-    "start-dev": "npm-run-all -p install-node-modules eslint start start-client",
+    "start": "npm i && npm i --prefix client && npm run build-client && npm run start-server",
+    "start-dev": "npm i && npm i --prefix client && npm-run-all -p start-server start-client eslint",
     "start-client": "npm run start --prefix client",
     "start-server": "nodemon index",
     "eslint": "npx eslint './'",
-    "install-node-modules": "npm i && npm i --prefix client",
     "build-client": "npm run build --prefix client"
   },
   "author": "Mykhailo Odrekhivskyi",
