@@ -17,7 +17,7 @@
     "start-client": "npm run start --prefix client",
     "start-server": "nodemon index",
     "eslint": "npx eslint './'",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm i --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Mykhailo Odrekhivskyi",
   "license": "ISC",
