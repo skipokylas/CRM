@@ -14,6 +14,10 @@ Loading pictures
 Work with asynchronous events
 MongoDB
 ```
+## Demo
+
+Demo [pip](https://ng-crm.herokuapp.com/login) to install foobar.
+
 ## Installation
 
 ##### Install globally: Angular CLI, Node.js, npm.
