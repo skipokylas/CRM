@@ -2,8 +2,7 @@
     <div class="card-content">
         <span class="card-title">Create account</span>
         <div class="input-field">
-            <input [ngClass]="{invalid: form.get('email').invalid && form.get('email').touched}" type="email"
-                formControlName="email">
+            <input [ngClass]="{invalid: form.get('email').invalid && form.get('email').touched}" type="email" formControlName="email">
             <label for="email">Email:</label>
             <span class="helper-text red-text center" *ngIf="form.get('email').invalid && form.get('email').touched">
                 <span class="helper-text red-text" *ngIf="form.get('email').errors['required']">
@@ -15,16 +14,13 @@
             </span>
         </div>
         <div class="input-field">
-            <input [ngClass]="{invalid: form.get('password').invalid && form.get('password').touched}" type="password"
-                formControlName="password">
-            <label for="password">Пароль:</label>
-            <span class="helper-text red-text center"
-                *ngIf="form.get('password').invalid && form.get('password').touched">
+            <input [ngClass]="{invalid: form.get('password').invalid && form.get('password').touched}" type="password" formControlName="password">
+            <label for="password">Password:</label>
+            <span class="helper-text red-text center" *ngIf="form.get('password').invalid && form.get('password').touched">
                 <span class="helper-text red-text" *ngIf="form.get('password').errors['required']">
                     Field is required
                 </span>
-                <span class="helper-text red-text"
-                    *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+                <span class="helper-text red-text" *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
                     Min length: {{ form.get('password').errors['minlength']['requiredLength'] }} <br>
                     Current length: {{form.get('password').errors['minlength']['actualLength']}}
                 </span>
